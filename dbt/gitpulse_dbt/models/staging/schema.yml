@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: stg_repos
+    description: "Staged repository metadata extracted from raw JSONB"
+    columns:
+      - name: repo_name
+        description: "Primary key: repository full name"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_commits
+    description: "Staged commit records extracted from raw JSONB"
+    columns:
+      - name: sha
+        description: "Primary key: unique commit git SHA hash"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_issues
+    description: "Staged GitHub issues and pull requests extracted from raw JSONB"
+    columns:
+      - name: number
+        description: "Primary key: GitHub issue number"
+        tests:
+          - unique
+          - not_null
+      - name: state
+        description: "Issue lifecycle state"
+        tests:
+          - accepted_values:
+              values: ['open', 'closed', 'merged']
+
+  - name: stg_pulls
+    description: "Staged pull request records extracted from raw JSONB"
+    columns:
+      - name: number
+        description: "Primary key: GitHub pull request number"
+        tests:
+          - unique
+          - not_null
+      - name: state
+        description: "Pull request lifecycle state"
+        tests:
+          - accepted_values:
+              values: ['open', 'closed', 'merged']

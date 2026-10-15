@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: dim_repos
+    description: "Repository dimension table"
+    columns:
+      - name: repo_name
+        description: "Primary key: repository full name"
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_commits
+    description: "Commits fact table"
+    columns:
+      - name: sha
+        description: "Primary key: unique commit git SHA"
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_pull_requests
+    description: "Pull requests fact table"
+    columns:
+      - name: number
+        description: "Primary key: pull request number"
+        tests:
+          - unique
+          - not_null
+      - name: state
+        description: "Pull request lifecycle state"
+        tests:
+          - accepted_values:
+              values: ['open', 'closed', 'merged']
+
+  - name: fct_issues
+    description: "Issues fact table"
+    columns:
+      - name: number
+        description: "Primary key: issue number"
+        tests:
+          - unique
+          - not_null
+      - name: state
+        description: "Issue lifecycle state"
+        tests:
+          - accepted_values:
+              values: ['open', 'closed', 'merged']

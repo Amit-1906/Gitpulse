@@ -1,0 +1,28 @@
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Environment secrets
+.env
+
+# Pipeline state and data
+data/state.json
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# dbt artifacts
+target/
+dbt_packages/
+dbt_modules/
+
+# Logs
+logs/
+*.log
+
+# OS artifacts
+.DS_Store
+Thumbs.db

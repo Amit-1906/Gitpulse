@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: raw_data
+    schema: public
+    description: "Raw GitHub API staging tables ingested by GitPulse loader"
+    tables:
+      - name: raw_repos
+        description: "Raw repository metadata JSONB staging table"
+      - name: raw_commits
+        description: "Raw commits JSONB staging table"
+      - name: raw_issues
+        description: "Raw issues JSONB staging table"
+      - name: raw_pulls
+        description: "Raw pull requests JSONB staging table"
